@@ -1,0 +1,255 @@
+/* Atelier Terres Claires */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    color: #43433C;
+    background: #FBF7EF;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: #BC5A3C;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 22px;
+}
+
+/* En-tête */
+header { padding: 20px 0; }
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-text h1 {
+    color: #24402E;
+    font-size: 1.6rem;
+}
+
+.logo-text span {
+    color: #8A9483;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.header-slogan {
+    color: #24402E;
+    font-style: italic;
+}
+
+/* Navigation */
+nav { background: #DCE6D5; }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding: 15px 0;
+}
+
+nav a {
+    color: #24402E;
+    text-decoration: none;
+}
+
+/* Hero */
+.hero {
+    background: #F3EDE1;
+    padding: 60px 40px;
+    margin: 30px 0;
+}
+
+.hero-content { max-width: 50%; }
+
+.hero-tag {
+    color: #BC5A3C;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.hero-content h2 {
+    color: #24402E;
+    font-size: 3.5rem;
+    margin: 10px 0 20px;
+}
+
+.hero-content p { margin-bottom: 25px; }
+
+/* Produits */
+.products-section { margin: 50px 0; }
+
+.section-title {
+    color: #24402E;
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    border: 1px solid #E6E0D4;
+    padding: 15px;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-title {
+    color: #24402E;
+    margin: 15px 0 5px;
+}
+
+.product-price { margin-bottom: 15px; }
+
+/* Bandeau livraison */
+.delivery-banner {
+    background: #DCE6D5;
+    padding: 25px 30px;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.delivery-icon { font-size: 2rem; }
+
+.delivery-text h3 { color: #24402E; }
+
+/* Pied de page */
+footer {
+    background: #ECE5D7;
+    padding: 40px 0 20px;
+    margin-top: 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.footer-col h4 {
+    color: #24402E;
+    margin-bottom: 15px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col a {
+    color: #43433C;
+    text-decoration: none;
+    line-height: 2;
+}
+
+.social-icons a {
+    color: #24402E;
+    margin-right: 12px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #E6E0D4;
+    margin-top: 30px;
+    padding-top: 20px;
+    font-size: 0.85rem;
+}
+
+.footer-bottom-slogan { font-style: italic; }
+
+
+
+
+/* Repère de position pour le menu déroulant */
+nav { position: relative; }
+
+
+
+/* Bouton burger : caché sur grand écran */
+.burger {
+  display: none;
+  flex-direction: column;   /* les 3 barres empilées */
+  gap: 5px;                 /* espace entre les barres */
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Les 3 barres */
+.burger span {
+  width: 26px;
+  height: 3px;
+  background: #24402E;     
+}
+
+/* Sous 768 px : mode mobile  */
+@media (max-width: 768px) {
+
+    .logo-text h1 {
+	color: #24402E;
+	font-size: 1.2rem;
+}
+
+    .nav-container {
+    display: flex;
+    justify-content: flex-end;   /* le burger vers la droite */
+    
+  }
+
+    .burger { display: flex; }    /*pour afficher l'icône burger*/ 
+
+  /* Le menu : caché, et positionné juste sous la barre de nav */
+    .nav-menu {
+    display: none;               /* caché par défaut */
+    position: absolute;
+    top: 100%;                   /* colle sous la nav */
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;      /* liens centré horizontalement */
+    gap: 2;                      /* annule le gap: 30px du bureau */
+    background: #DCE6D5;         /* même fond que la nav */
+  }
+
+    .nav-menu.is-open { display: flex; }   /* le JS l'affiche au clic */
+
+    .nav-menu a { padding: 12px 20px; }    /* liens plus aérés à toucher */
+
+   
+     
+  .products-grid { grid-template-columns: 1fr; }   /* produits empilés */
+  .footer-grid   { grid-template-columns: 1fr; text-align: center;} /* pied : 1 colonne */
+  .hero-content  { max-width: 100%; }              /* le texte respire */
+  .hero          { padding: 40px 20px; }           /* moins de padding */
+  .product-card {text-align: center;}
+  .hero-content {text-align: center;}
+ 
+   h2 {text-align: center;}
+  
+}
+
+
+
