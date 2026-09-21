@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bol en grès bleu — Atelier Terres Claires</title>
+
+    <style>
+    /* Atelier Terres Claires — Page produit */
+
+    :root {
+        --cream:      #FBF7EF;
+        --sand:       #ECE5D7;
+        --hero:       #F3EDE1;
+        --sage:       #DCE6D5;
+        --green:      #24402E;
+        --terracotta: #BC5A3C;
+        --ink:        #43433C;
+        --muted:      #8A9483;
+        --border:     #E6E0D4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: Georgia, serif;
+        color: var(--ink);
+        background: var(--cream);
+        line-height: 1.6;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* En-tête */
+    .site-header { position: relative; }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 18px 0;
+    }
+
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-mark { font-size: 2rem; line-height: 1; }
+
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-text strong {
+        color: var(--green);
+        font-size: 1.15rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    .logo-text small {
+        color: var(--muted);
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+
+    .main-nav ul { display: flex; gap: 34px; list-style: none; }
+    .main-nav a { color: var(--green); font-size: 1.05rem; padding-bottom: 3px; }
+    .main-nav a.is-active { border-bottom: 2px solid var(--green); }
+
+    .header-slogan {
+        color: var(--green);
+        font-style: italic;
+        font-size: 0.9rem;
+        max-width: 15ch;
+    }
+
+    .header-actions { display: flex; align-items: center; gap: 18px; }
+    .icon-btn {
+        background: none;
+        border: none;
+        padding: 4px;
+        font-size: 1.3rem;
+        line-height: 1;
+    }
+
+    /* Bouton burger (caché sur grand écran) */
+    .burger {
+        /* display: none; */
+        flex-direction: column;
+        gap: 5px;
+        width: 34px;
+        /* background: none; */
+        border: none;
+    }
+    .burger span {
+        width: 26px;
+        height: 2px;
+        background: var(--green);
+        transition: transform 0.25s, opacity 0.2s;
+    }
+
+    .header-strip { height: 12px; background: var(--sage); }
+
+    /* Produit */
+    .product {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 56px;
+        align-items: center;
+        margin: 52px auto;
+    }
+
+    .product-media img { width: 100%; border-radius: 4px; }
+
+    .eyebrow {
+        color: var(--terracotta);
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+
+    .product-info h1 {
+        color: var(--green);
+        font-size: 3rem;
+        line-height: 1.1;
+        margin-bottom: 12px;
+    }
+
+    .price { color: var(--green); font-size: 1.6rem; margin-bottom: 22px; }
+
+    .description { max-width: 46ch; margin-bottom: 32px; }
+
+    /* Quantité + ajout au panier */
+    .qty-label { display: block; color: var(--green); margin-bottom: 10px; }
+
+    .buy-row { display: flex; align-items: stretch; gap: 16px; margin-bottom: 40px; }
+
+    .stepper {
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--border);
+        background: #fff;
+    }
+    .stepper button {
+        width: 48px;
+        height: 54px;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: var(--green);
+    }
+    .stepper input {
+        width: 46px;
+        height: 54px;
+        text-align: center;
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: 1.1rem;
+        color: var(--ink);
+    }
+
+    .btn-cart {
+        flex: 1;
+        min-height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 28px;
+        background: var(--terracotta);
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        font-size: 1.1rem;
+    }
+
+    /* Points de réassurance */
+    .features {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        text-align: center;
+    }
+    .features li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: var(--green);
+        font-size: 0.9rem;
+        line-height: 1.35;
+    }
+    .feature-icon { font-size: 1.8rem; line-height: 1; }
+
+    /* Bandeau livraison */
+    .delivery-banner {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        background: var(--sage);
+        padding: 26px 34px;
+        border-radius: 4px;
+        margin: 40px auto;
+    }
+    .delivery-icon { font-size: 2.2rem; line-height: 1; }
+    .delivery-banner h2 { color: var(--green); font-size: 1.25rem; }
+
+    /* Pied de page */
+    .site-footer { background: var(--sand); margin-top: 24px; padding: 38px 0 20px; }
+
+    .footer-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+    }
+    .footer-nav ul { display: flex; gap: 28px; list-style: none; }
+    .footer-nav a  { color: var(--green); }
+
+    .footer-social { display: flex; align-items: center; gap: 16px; }
+    .footer-social .label { color: var(--green); font-size: 0.9rem; }
+    .footer-social a { color: var(--green); font-size: 0.9rem; }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-top: 1px solid var(--border);
+        margin-top: 30px;
+        padding-top: 18px;
+        font-size: 0.85rem;
+    }
+    .footer-bottom .slogan { font-style: italic; color: var(--muted); }
+
+    /* Mobile — sous 768 px */
+    @media (max-width: 768px) {
+
+        .header-slogan { display: none; }
+        .burger { display: flex; }
+
+        .main-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--hero);
+            border-top: 1px solid var(--border);
+        }
+        .main-nav.is-open { display: block; }
+        .main-nav ul { flex-direction: column; gap: 0; }
+        .main-nav li { border-bottom: 1px solid var(--border); }
+        .main-nav a { display: block; padding: 18px 24px; font-size: 1.1rem; }
+
+        /* Burger -> croix quand le menu est ouvert */
+        .burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.is-open span:nth-child(2) { opacity: 0; }
+        .burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .product { grid-template-columns: 1fr; gap: 26px; margin: 26px auto; }
+        .product-info h1 { font-size: 2.1rem; }
+        .price { font-size: 1.4rem; }
+
+        .btn-cart { padding: 0 16px; font-size: 1rem; }
+
+        .features { gap: 12px; }
+        .features li { font-size: 0.78rem; }
+        .feature-icon { font-size: 1.5rem; }
+
+        .delivery-banner { padding: 22px 24px; gap: 16px; }
+
+        /* Pied de page réduit à la mention légale, centrée */
+        .footer-top { display: none; }
+        .footer-bottom { justify-content: center; text-align: center; margin-top: 0; }
+        .footer-bottom .slogan { display: none; }
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- En-tête -->
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="#" class="logo" aria-label="Atelier Terres Claires — accueil">
+                <span class="logo-mark" aria-hidden="true">&#127807;</span>
+                <span class="logo-text">
+                    <strong>Atelier<br>Terres Claires</strong>
+                    <small>Céramiques artisanales</small>
+                </span>
+            </a>
+
+            <nav class="main-nav" id="nav-menu" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <p class="header-slogan">Des objets du quotidien qui ont du sens.</p>
+
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="Rechercher"><span aria-hidden="true">&#128269;</span></button>
+                <button class="icon-btn" aria-label="Mon compte"><span aria-hidden="true">&#128100;</span></button>
+                <button class="icon-btn" aria-label="Panier"><span aria-hidden="true">&#128722;</span></button>
+
+                <button class="burger" id="burger"
+                        aria-label="Ouvrir le menu"
+                        aria-expanded="false"
+                        aria-controls="nav-menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-strip"></div>
+
+    <!-- Contenu -->
+    <main>
+
+        <!-- Fiche produit -->
+        <section class="product container">
+
+            <div class="product-media">
+                <img src="bol_bleu.webp" alt="Bol en grès bleu émaillé, posé sur une table en bois">
+            </div>
+
+            <div class="product-info">
+                <p class="eyebrow">Nos bols</p>
+                <h1>Bol en grès bleu</h1>
+                <p class="price">35 €</p>
+                <p class="description">
+                    Un bol unique, façonné à la main dans notre atelier en France.
+                    Idéal pour vos petits-déjeuners, soupes ou plats du quotidien,
+                    il allie esthétique et durabilité.
+                </p>
+
+                <span class="qty-label">Quantité</span>
+                <div class="buy-row">
+                    <div class="stepper">
+                        <button type="button" aria-label="Diminuer la quantité">−</button>
+                        <input type="text" value="1" readonly aria-label="Quantité">
+                        <button type="button" aria-label="Augmenter la quantité">+</button>
+                    </div>
+
+                    <button class="btn-cart">
+                        <span aria-hidden="true">&#128722;</span>
+                        Ajouter au panier
+                    </button>
+                </div>
+
+                <div>
+                    <ul class="features">
+                        <li><span class="feature-icon" aria-hidden="true">&#127467;&#127479;</span>Fabrication<br>française</li>
+                        <li><span class="feature-icon" aria-hidden="true">&#9995;</span>Pièce unique<br>faite à la main</li>
+                        <li><span class="feature-icon" aria-hidden="true">&#9851;&#65039;</span>Matériaux<br>durables</li>
+                        <li><span class="feature-icon" aria-hidden="true">&#128666;</span>Livraison offerte<br>dès 60 €</li>
+                    </ul>
+                </div>
+        </section>
+
+        <!-- Bandeau livraison -->
+        <section class="container">
+            <div class="delivery-banner">
+                <span class="delivery-icon" aria-hidden="true">&#128666</span>
+                <div>
+                    <h2>Livraison offerte dès 60 €</h2>
+                    <p>En France métropolitaine. Expédition sous 48 h.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <a href="#" class="logo" aria-label="Atelier Terres Claires — accueil">
+                    <span class="logo-mark" aria-hidden="true">&#127807;</span>
+                    <span class="logo-text">
+                        <strong>Atelier<br>Terres Claires</strong>
+                        <small>Céramiques artisanales</small>
+                    </span>
+                </a>
+
+                <nav class="footer-nav" aria-label="Navigation du pied de page">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="footer-social">
+                    <span class="label">Suivez-nous</span>
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Pinterest</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Atelier Terres Claires. Tous droits réservés.</p>
+                <p class="slogan">Des objets du quotidien qui ont du sens.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Menu burger (mobile) -->
+    <script>
+    const burger  = document.getElementById("burger");
+    const navMenu = document.getElementById("nav-menu");
+
+    function toggleMenu() {
+        const open = navMenu.classList.toggle("is-open");
+        burger.classList.toggle("is-open", open);
+        burger.setAttribute("aria-expanded", open);
+        burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    }
+
+    function closeMenu() {
+        navMenu.classList.remove("is-open");
+        burger.classList.remove("is-open");
+        burger.setAttribute("aria-expanded", "false");
+        burger.setAttribute("aria-label", "Ouvrir le menu");
+    }
+
+    burger.addEventListener("click", toggleMenu);
+    navMenu.addEventListener("click", (e) => { if (e.target.tagName === "A") closeMenu(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+    </script>
+
+</body>
+</html>
