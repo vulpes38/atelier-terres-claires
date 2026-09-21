@@ -230,7 +230,7 @@ nav { position: relative; }
     right: 0;
     flex-direction: column;
     align-items: center;      /* liens centré horizontalement */
-    gap: 2;                      /* annule le gap: 30px du bureau */
+    gap:2rem;                      /* annule le gap: 30px du bureau */
     background: #DCE6D5;         /* même fond que la nav */
   }
 
@@ -251,5 +251,9 @@ nav { position: relative; }
   
 }
 
-
+.footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
 
